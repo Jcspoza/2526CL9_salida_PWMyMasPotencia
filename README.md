@@ -19,7 +19,7 @@ Indice evolutivo del las clases del taller + libros y webs de referencia:
 
 - Aprender / Entender: entradas analógicas en micro Controladores
   
-  - Intro Teórica breve a los ADC´s
+  - Intro Teórica: DAC, el protocolo I2S y la modulación PWM
   
   - 1er montaje : Divisor de tensión
   
@@ -66,9 +66,6 @@ Más que un proyecto para ir construyendo, esta Clase #9 será un estudio de com
 
 ### Fotos del montaje final
 
-| <img src="./doc/LDRrele_detalle.jpg" title="" alt="" width="398"> | <img title="" src="./doc/LDRreleEncendido.jpg" alt="" width="398"> | <img title="" src="./doc/LDRreleApagado.jpg" alt="" width="398"> |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
-
 ### Librerías importantes - No son necesarias en CL6
 
 ## Aprender / Entender: salidas pseudo-analógicas en micro Controladores PWM
@@ -77,11 +74,11 @@ Más que un proyecto para ir construyendo, esta Clase #9 será un estudio de com
 
 El mundo real es analógico, luego si queremos controlarlo con electrónica programable (=microcontroladores), **tenemos que poder 'escribir'  señales analógicas** y viceversa ( ver clase 6 de este curso)
 
-<img src="file:///C:/Users/josec/OneDrive/Documentos/GitHub/2526CL9_salida_PWMyMasPotencia/doc/ADCenuC.png" title="" alt="" width="369">
+![](C:\Users\josec\OneDrive\Documentos\GitHub\2526CL9_salida_PWMyMasPotencia\doc\ADCenuC.png)
 
 Por eso, no es raro que desde que aparecieron los micro Controladores, tuvieran entradas que podían convertir la informacion analógica, normalmente un valor de voltaje, en informacion digital: el controlador Arduino UNO R3 ( lanzado en 2011)  tiene 6 entradas analógicas directas, o ADC´s. 
 
-La conversión contraria, que es la que vamos a ver en esta Clase, **desde digital a analógico** se puede hacer de 3 formas:
+La conversión contraria, que es la que vamos a ver en esta Clase, **desde digital a analógico** se puede hacer de 2 formas:
 
 1) Conversión **real** de digital analógico con **DAC**´s
 
@@ -113,11 +110,21 @@ En el trabajo eficaz en electricidad intervienen el voltaje, la corriente y el t
 
 (DEL TUTORIAL DE SUNFOUNDER) **La Modulación por Ancho de Pulso (PWM)** es un método para controlar la cantidad de energía suministrada a un dispositivo electrónico mediante ciclos de encendido y apagado a alta frecuencia. El ancho del pulso (la duración de su activación) determina la cantidad de energía eficaz que recibe el dispositivo.
 
-![](C:\Users\josec\OneDrive\Documentos\GitHub\2526CL9_salida_PWMyMasPotencia\doc\pwm_duty_cycle.webp)
+![](./doc/pwm_duty_cycle.webp)
 
 Pero para que toda esta 'estrategia' funcione , tenemos que hacerlo tan rápido que ni siquiera se nota el parpadeo en un LED, o tan rápido en un motor que la inercia del giro suavice los cambios. entonces, **controlar la energia eficaz** =  controlar el tiempo que una señal está activada = **controlar la anchura del pulso de activación.**
 
 ### 1er montaje : Cambiar brillo de un led por PWM
+
+Vamos a ver como el modulación PWM cambia el brillo de un led externo.
+
+**Montamos:** un led externo conectando su ánodo (+, pata larga) al GPIO15, y su cátodo (- , pata corta, muesca en el pastico) a una resistencia de 100 ohm cuya otra pata se conecta a GND.
+
+Un calculo sencillo indica que dado que la caída de voltaje Vf en el diodo rojo es de 1,6 volt aprox, en la resistencia han de caer 3.3 -1.6 volt= 1,7 volt, por lo que la corriente es de 1,7volt / 100 ohm = **17 mA** que es un valor alto, respecto a otros montajes con 8mA, para que el led luzca bien ( esa el la razón de una resistencia de 100 ohm y no de 220 ohm)
+
+A) Probamos el LED con un blink 
+
+[Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py)
 
 En un montaje PWM hay dos cosas que debemos decirle al microcontrolador:
 
@@ -132,14 +139,14 @@ Esta lección forma parte del los aprendizajes necesarios para controlar cargas 
 
 ## Tabla resumen de programas
 
-| Programa | Lenguaje | HW si Robotica y Notas | Objetivo de Aprendizaje |
-| -------- | -------- | ---------------------- | ----------------------- |
-|          | uPy      |                        |                         |
-|          | uPy      |                        |                         |
-|          | uPy      |                        |                         |
-|          | uPy      |                        |                         |
-|          | uPy      |                        |                         |
-|          | uPy      |                        |                         |
+| Programa                                       | Lenguaje | HW si Robotica y Notas                   | Objetivo de Aprendizaje |
+| ---------------------------------------------- | -------- | ---------------------------------------- | ----------------------- |
+| [Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py) | uPy      | LED en GPIO15 con resistencia de 100 ohm |                         |
+|                                                | uPy      |                                          |                         |
+|                                                | uPy      |                                          |                         |
+|                                                | uPy      |                                          |                         |
+|                                                | uPy      |                                          |                         |
+|                                                | uPy      |                                          |                         |
 
 ---
 
