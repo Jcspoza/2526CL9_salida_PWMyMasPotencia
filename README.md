@@ -128,8 +128,6 @@ Un calculo sencillo indica que dado que la caída de voltaje Vf en el diodo rojo
 
 [Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py)
 
-# 
-
 #### 1.B) Controlamos con PWM de forma precisa el brillo del led.
 
 [R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)
@@ -152,20 +150,24 @@ Mira los dos programas que permiten introducir el valor dutty como nanosegundos 
 
 #### 1.C) Usamos PWM para fade-in y fade out
 
+Y por fin el programa completo que va subiendo y bajando el ciclo de trabajo
+
+[R2526CL9_ExPWM_cycleFiFo_v1.py](R2526CL9_ExPWM_cycleFiFo_v1.py)
+
 ## Proyecto completo: en inicio de pruebas : sensor humedad suelo + bomba agua (moto)
 
 Esta lección forma parte del los aprendizajes necesarios para controlar cargas analógicas de cierta potencia como un motor
 
 ## Tabla resumen de programas
 
-| Programa                                                   | Lenguaje | HW si Robotica y Notas                   | Objetivo de Aprendizaje |
-| ---------------------------------------------------------- | -------- | ---------------------------------------- | ----------------------- |
-| [Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py)             | uPy      | LED en GPIO15 con resistencia de 100 ohm |                         |
-| [R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py) | uPy      |                                          |                         |
-| [R2526CL9_ExPWM_inNseg_v1.py](R2526CL9_ExPWM_inNseg_v1.py) | uPy      |                                          |                         |
-|                                                            | uPy      |                                          |                         |
-|                                                            | uPy      |                                          |                         |
-|                                                            | uPy      |                                          |                         |
+| Programa                                                         | Lenguaje | HW si Robotica y Notas                   | Objetivo de Aprendizaje |
+| ---------------------------------------------------------------- | -------- | ---------------------------------------- | ----------------------- |
+| [Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py)                   | uPy      | LED en GPIO15 con resistencia de 100 ohm |                         |
+| [R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)       | uPy      |                                          |                         |
+| [R2526CL9_ExPWM_inNseg_v1.py](R2526CL9_ExPWM_inNseg_v1.py)       | uPy      |                                          |                         |
+| [R2526CL9_ExPWM_cycleFiFo_v1.py](R2526CL9_ExPWM_cycleFiFo_v1.py) | uPy      |                                          |                         |
+|                                                                  | uPy      |                                          |                         |
+|                                                                  | uPy      |                                          |                         |
 
 ---
 
