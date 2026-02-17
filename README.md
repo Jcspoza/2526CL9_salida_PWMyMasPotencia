@@ -58,15 +58,13 @@ Más que un proyecto para ir construyendo, esta Clase #9 será un estudio de com
 
 ### Links a informacion
 
-| Tema                 | Link                                                                                                                                                                          |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| I2C y DAC´s externos | [GitHub - miketeachman/micropython-i2s-examples: Examples for I2S support on microcontrollers that run MicroPython](https://github.com/miketeachman/micropython-i2s-examples) |
-| PWM                  | [kit kepler Sunfounder 2.3 Fading LED](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/pyproject/py_fade.html)                                                     |
-|                      |                                                                                                                                                                               |
+| Tema                                | Link                                                                                                                                                                          |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| I2C y DAC´s externos                | [GitHub - miketeachman/micropython-i2s-examples: Examples for I2S support on microcontrollers that run MicroPython](https://github.com/miketeachman/micropython-i2s-examples) |
+| PWM                                 | [kit kepler Sunfounder 2.3 Fading LED](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/pyproject/py_fade.html)                                                     |
+| Subir y bajar iluminación de un LED | https://dmccreary.github.io/learning-micropython/basics/04-fade-in-and-out/                                                                                                   |
 
-### Fotos del montaje final
-
-### Librerías importantes - No son necesarias en CL6
+### Librerías importantes - No son necesarias en CL9
 
 ## Aprender / Entender: salidas pseudo-analógicas en micro Controladores PWM
 
@@ -116,15 +114,25 @@ Pero para que toda esta 'estrategia' funcione , tenemos que hacerlo tan rápido 
 
 ### 1er montaje : Cambiar brillo de un led por PWM
 
-Vamos a ver como el modulación PWM cambia el brillo de un led externo.
+Vamos a ver como el modulación PWM cambia el brillo de un led externo. seguimos el tutorial
+
+[Fade In and Out - Learning MicroPython](https://dmccreary.github.io/learning-micropython/basics/04-fade-in-and-out/)
+
+[VideoDEMO de PWM](./doc/R2526_CL9_PWMdemo.mp4)
 
 **Montamos:** un led externo conectando su ánodo (+, pata larga) al GPIO15, y su cátodo (- , pata corta, muesca en el pastico) a una resistencia de 100 ohm cuya otra pata se conecta a GND.
 
 Un calculo sencillo indica que dado que la caída de voltaje Vf en el diodo rojo es de 1,6 volt aprox, en la resistencia han de caer 3.3 -1.6 volt= 1,7 volt, por lo que la corriente es de 1,7volt / 100 ohm = **17 mA** que es un valor alto, respecto a otros montajes con 8mA, para que el led luzca bien ( esa el la razón de una resistencia de 100 ohm y no de 220 ohm)
 
-A) Probamos el LED con un blink 
+#### 1.A) Probamos el LED con un blink
 
 [Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py)
+
+# 
+
+#### 1.B) Controlamos con PWM de forma precisa el brillo del led.
+
+[R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)
 
 En un montaje PWM hay dos cosas que debemos decirle al microcontrolador:
 
@@ -133,20 +141,31 @@ En un montaje PWM hay dos cosas que debemos decirle al microcontrolador:
 
 La velocidad de cambio del pulso se denomina frecuencia. Se puede establecer en 1000 cambios por segundo (1K), una velocidad mucho mayor de la que el ojo humano puede detectar.
 
+En micropython la implementación de PWM permite que el ancho del pulso se puede controlar de 2 formas :
+
+* de forma directa indicando el ancho del pulso en nanosegundos 'duty_ns(nanosegundos)'
+  * [R2526CL9_ExPWM_inNseg_v1.py](R2526CL9_ExPWM_inNseg_v1.py)
+* en forma de entero sin signo con 'duty_u16(valor)' donde valor tiene un rango de 0 a 65535 (16bits)
+  * [R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)
+
+Mira los dos programas que permiten introducir el valor dutty como nanosegundos o como porcentaje
+
+#### 1.C) Usamos PWM para fade-in y fade out
+
 ## Proyecto completo: en inicio de pruebas : sensor humedad suelo + bomba agua (moto)
 
 Esta lección forma parte del los aprendizajes necesarios para controlar cargas analógicas de cierta potencia como un motor
 
 ## Tabla resumen de programas
 
-| Programa                                       | Lenguaje | HW si Robotica y Notas                   | Objetivo de Aprendizaje |
-| ---------------------------------------------- | -------- | ---------------------------------------- | ----------------------- |
-| [Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py) | uPy      | LED en GPIO15 con resistencia de 100 ohm |                         |
-|                                                | uPy      |                                          |                         |
-|                                                | uPy      |                                          |                         |
-|                                                | uPy      |                                          |                         |
-|                                                | uPy      |                                          |                         |
-|                                                | uPy      |                                          |                         |
+| Programa                                                   | Lenguaje | HW si Robotica y Notas                   | Objetivo de Aprendizaje |
+| ---------------------------------------------------------- | -------- | ---------------------------------------- | ----------------------- |
+| [Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py)             | uPy      | LED en GPIO15 con resistencia de 100 ohm |                         |
+| [R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py) | uPy      |                                          |                         |
+| [R2526CL9_ExPWM_inNseg_v1.py](R2526CL9_ExPWM_inNseg_v1.py) | uPy      |                                          |                         |
+|                                                            | uPy      |                                          |                         |
+|                                                            | uPy      |                                          |                         |
+|                                                            | uPy      |                                          |                         |
 
 ---
 
