@@ -8,7 +8,7 @@ Indice evolutivo del las clases del taller + libros y webs de referencia:
 
 ## Clase 9 - Indice
 
-- Propuesta de estudio : entradas analógicas en micro Controladores
+- Propuesta de estudio : salidas pseudo-analógicas en micro Controladores => PWM + controlar mas potencia
 
 - Materiales y links a información
   
@@ -43,7 +43,7 @@ Más que un proyecto para ir construyendo, esta Clase #9 será un estudio de com
 
 ## Materiales y links a información
 
-Materiales y links a informacion
+### Materiales
 
 | Material                                                                                                               | Descripcion                                                                                                                                                      | Kit SF |
 | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
@@ -56,6 +56,14 @@ Materiales y links a informacion
 |                                                                                                                        |                                                                                                                                                                  |        |
 |                                                                                                                        |                                                                                                                                                                  |        |
 
+### Links a informacion
+
+| Tema                 | Link                                                                                                                                                                          |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| I2C y DAC´s externos | [GitHub - miketeachman/micropython-i2s-examples: Examples for I2S support on microcontrollers that run MicroPython](https://github.com/miketeachman/micropython-i2s-examples) |
+| PWM                  | [kit kepler Sunfounder 2.3 Fading LED](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/pyproject/py_fade.html)                                                     |
+|                      |                                                                                                                                                                               |
+
 ### Fotos del montaje final
 
 | <img src="./doc/LDRrele_detalle.jpg" title="" alt="" width="398"> | <img title="" src="./doc/LDRreleEncendido.jpg" alt="" width="398"> | <img title="" src="./doc/LDRreleApagado.jpg" alt="" width="398"> |
@@ -67,41 +75,56 @@ Materiales y links a informacion
 
 ### Intro Teórica breve a los DAC, el protocolo I2S y la modulación PWM
 
+El mundo real es analógico, luego si queremos controlarlo con electrónica programable (=microcontroladores), **tenemos que poder 'escribir'  señales analógicas** y viceversa ( ver clase 6 de este curso)
+
+<img src="file:///C:/Users/josec/OneDrive/Documentos/GitHub/2526CL9_salida_PWMyMasPotencia/doc/ADCenuC.png" title="" alt="" width="369">
+
+Por eso, no es raro que desde que aparecieron los micro Controladores, tuvieran entradas que podían convertir la informacion analógica, normalmente un valor de voltaje, en informacion digital: el controlador Arduino UNO R3 ( lanzado en 2011)  tiene 6 entradas analógicas directas, o ADC´s. 
+
+La conversión contraria, que es la que vamos a ver en esta Clase, **desde digital a analógico** se puede hacer de 3 formas:
+
+1) Conversión **real** de digital analógico con **DAC**´s
+
+2) **Pseudo-conversión** de digital a analógico usando pulsos cuadrados modulados en anchura o **PWM**
+
+o DAC no es común en los uControladores porque priorizan el bajo costo y el bajo consumo**.
+
+--> El microcontrolador PICO _/ W /2 / 2W <u>no dispone de DAC´</u>s
+
+--> Algunos modelos del micro controlador ESP32 disponen de 2 DAC´s pero tiene una resolución de 8 -bits, muy baja para dar una mínima calidad.
+
 #### DAC´s y protocolo i2S
 
-El mundo real es analógico, luego si queremos controlarlo con electrónica programable (=microcontroladores), **tenemos que poder 'escribir'  informacion analógica** y viceversa ( ver clase 6 de este curso)
+Para aplicaciones de alta fidelidad (audio, video), un DAC externo ofrece mejor rendimiento, precisión, flexibilidad y permite un diseño modular.
 
-Por eso, no es raro que desde el inicio los micro Controladores tuvieran entradas que podían convertir la informacion analógica, normalmente un valor de voltaje, en informacion digital: el controlador Arduino UNO R3 ( lanzado en 2011)  tiene 6 entradas analógicas directas, o ADC´s. 
-
-La conversión contraria, que es la que vamso a ver en esta Clase, **desde digital a analógico o DAC no es común en los uControladores porque priorizan la funcionalidad básica el bajo costo y el bajo consumo**.
-
---> El microcontrolador PICO _/ W /2 / 2W no dispone de DAC´s
-
---> Algunos modelo del micro controlador ESOP32 disponen de 2 DAC´s pero tiene una resolución de 8 -bits, muy baja para dar una mínima calidad
-
-Para aplicaciones de alta fidelidad o velocidad (audio, video), un DAC externo ofrece mejor rendimiento, precisión, flexibilidad y diseño modular.
-
-La comunicación de los micro-controladores con un DAC externo se realiza normalmente con un protocolo digital llamado **I2S**. Es un tema extenso y requiere comprar micrófonos y/o DAC´s i2c. Toda la familia PICO puede comunicarse en I2S y en micropython hay una libreria para ello, y esta disponible y estable desde la version de micropython 1.20
-
-
+La comunicación de los micro-controladores con un DAC externo se realiza normalmente con un protocolo digital llamado **I2S**. Es un tema extenso y requiere comprar micrófonos y/o DAC´s i2c, asi que no lo vamos a tratar en este curso, de momento. Toda la familia PICO puede comunicarse en I2S y en micropython hay una libreria para ello, que estaá disponible y estable desde la versión de micropython 1.20
 
 Si tienes curiosidad mira el excelente tutorial 
 
 [GitHub - miketeachman/micropython-i2s-examples: Examples for I2S support on microcontrollers that run MicroPython](https://github.com/miketeachman/micropython-i2s-examples)
 
+#### Modulación PWM
 
+Como ya se ha dicho, los uControladores no permiten ajustar fácilmente una salida a **un nivel de <u>voltaje</u> determinado** sin circuitos complejos (DAC´'s) . Pero en muchas aplicaciones, **lo que en realidad necesitamos es controlar el trabajo eficaz** que va a realizar un actuador como un LED o un motor.
 
-#### Conceptos a conocer modulacion PWM
+Trabajo eficaz =  **a energía realmente útil transferida** durante un intervalo de tiempo
 
--- ME QUEDE AQUI--
+En el trabajo eficaz en electricidad intervienen el voltaje, la corriente y el tiempo, luego si no podemso fijar un  voltaje o intensidad determinados, sin complicar la circuitería, si que podemos en un uC, controlar el tiempo de 'encendido' y 'apagado' de la señal que proporciona potencia, o de la señal de control para el dispositivo que entrega la potencia 
 
+(DEL TUTORIAL DE SUNFOUNDER) **La Modulación por Ancho de Pulso (PWM)** es un método para controlar la cantidad de energía suministrada a un dispositivo electrónico mediante ciclos de encendido y apagado a alta frecuencia. El ancho del pulso (la duración de su activación) determina la cantidad de energía eficaz que recibe el dispositivo.
 
+![](C:\Users\josec\OneDrive\Documentos\GitHub\2526CL9_salida_PWMyMasPotencia\doc\pwm_duty_cycle.webp)
+
+Pero para que toda esta 'estrategia' funcione , tenemos que hacerlo tan rápido que ni siquiera se nota el parpadeo en un LED, o tan rápido en un motor que la inercia del giro suavice los cambios. entonces, **controlar la energia eficaz** =  controlar el tiempo que una señal está activada = **controlar la anchura del pulso de activación.**
 
 ### 1er montaje : Cambiar brillo de un led por PWM
 
+En un montaje PWM hay dos cosas que debemos decirle al microcontrolador:
 
+1. ¿Con qué frecuencia quieres que una onda cuadrada se active y desaparezca?
+2. ¿Qué tan ancha debe ser la parte activa del pulso (en relación con la anchura total)? Esto se denomina ciclo de trabajo.
 
-
+La velocidad de cambio del pulso se denomina frecuencia. Se puede establecer en 1000 cambios por segundo (1K), una velocidad mucho mayor de la que el ojo humano puede detectar.
 
 ## Proyecto completo: en inicio de pruebas : sensor humedad suelo + bomba agua (moto)
 
