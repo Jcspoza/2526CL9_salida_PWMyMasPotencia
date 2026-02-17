@@ -74,7 +74,7 @@ Más que un proyecto para ir construyendo, esta Clase #9 será un estudio de com
 
 El mundo real es analógico, luego si queremos controlarlo con electrónica programable (=microcontroladores), **tenemos que poder 'escribir'  señales analógicas** y viceversa ( ver clase 6 de este curso)
 
-![](C:\Users\josec\OneDrive\Documentos\GitHub\2526CL9_salida_PWMyMasPotencia\doc\ADCenuC.png)
+![](./doc/ADCenuC.png)
 
 Por eso, no es raro que desde que aparecieron los micro Controladores, tuvieran entradas que podían convertir la informacion analógica, normalmente un valor de voltaje, en informacion digital: el controlador Arduino UNO R3 ( lanzado en 2011)  tiene 6 entradas analógicas directas, o ADC´s. 
 
