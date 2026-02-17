@@ -21,17 +21,13 @@ Indice evolutivo del las clases del taller + libros y webs de referencia:
   
   - Intro Teórica: DAC, el protocolo I2S y la modulación PWM
   
-  - 1er montaje : Divisor de tensión
+  - 1er montaje : Cambiar brillo de un led por PWM
   
-  - 2do Montaje : Potenciómetro
-  
-  - 3ro Montaje : LDR
-  
-  - 4to Montaje : 
+  - 2do Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor
+    
+    
 
-- Lista (no completa) de sensores analógicos en robotica
-
-- Proyecto completo: por decidir
+- Proyecto completo-> en inicio de pruebas : sensor humedad suelo + bomba agua (motor)
 
 - Tabla resumen de programas
 
@@ -45,16 +41,14 @@ Más que un proyecto para ir construyendo, esta Clase #9 será un estudio de com
 
 ### Materiales
 
-| Material                                                                                                               | Descripcion                                                                                                                                                      | Kit SF |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| [Protoboard 700](https://docs.sunfounder.com/projects/kepler-kit/en/latest/component/component_breadboard.html)        | Placa para prototipos ver apartado [Uso de la protoboard](https://github.com/Jcspoza/2526CL1_R_CircElect0#uso-de-la-protoboard). Mejor usar la protoboard de 700 | SI     |
-| [Cables dupond M-M](https://docs.sunfounder.com/projects/kepler-kit/en/latest/component/component_wire.html)           | Sirven para hacer conexiones en protoboard                                                                                                                       | SI     |
-| [Led rojo](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_led.html)                    | Se usara para indicar comienzo de cuenta de Tiempo de reacción                                                                                                   | SI     |
-| [Resistencia 100 ohm x1](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_resistor.html) | Resistencia 100 ohm para limitar corriente de LED                                                                                                                | SI     |
-|                                                                                                                        |                                                                                                                                                                  |        |
-|                                                                                                                        |                                                                                                                                                                  |        |
-|                                                                                                                        |                                                                                                                                                                  |        |
-|                                                                                                                        |                                                                                                                                                                  |        |
+| Material                                                                                                               | Descripcion                                                                                                                                                      | Kit SF | Montaje  |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------- |
+| [Protoboard 700](https://docs.sunfounder.com/projects/kepler-kit/en/latest/component/component_breadboard.html)        | Placa para prototipos ver apartado [Uso de la protoboard](https://github.com/Jcspoza/2526CL1_R_CircElect0#uso-de-la-protoboard). Mejor usar la protoboard de 700 | SI     | Todos    |
+| [Cables dupond M-M](https://docs.sunfounder.com/projects/kepler-kit/en/latest/component/component_wire.html)           | Sirven para hacer conexiones en protoboard                                                                                                                       | SI     | Todos    |
+| [Led rojo](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_led.html)                    | Se usara para indicar comienzo de cuenta de Tiempo de reacción                                                                                                   | SI     | Mon.  #1 |
+| [Resistencia 100 ohm x1](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_resistor.html) | Resistencia 100 ohm para limitar corriente de LED                                                                                                                | SI     | Mon. #1  |
+| Pico _, 2, W, 2W                                                                                                       | Vale cualquiera de los 4 modelos de Pico                                                                                                                         | SI     | Mon. #1  |
+|                                                                                                                        |                                                                                                                                                                  |        |          |
 
 ### Links a informacion
 
@@ -154,7 +148,13 @@ Y por fin el programa completo que va subiendo y bajando el ciclo de trabajo
 
 [R2526CL9_ExPWM_cycleFiFo_v1.py](R2526CL9_ExPWM_cycleFiFo_v1.py)
 
-## Proyecto completo: en inicio de pruebas : sensor humedad suelo + bomba agua (moto)
+## 2do Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor
+
+![](C:\Users\josec\OneDrive\Documentos\GitHub\2526CL9_salida_PWMyMasPotencia\doc\Transistor_cambia3a9.png)
+
+
+
+## Proyecto completo-> en inicio de pruebas : sensor humedad suelo + bomba agua (motor)
 
 Esta lección forma parte del los aprendizajes necesarios para controlar cargas analógicas de cierta potencia como un motor
 
