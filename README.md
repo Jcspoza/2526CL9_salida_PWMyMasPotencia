@@ -135,7 +135,7 @@ Vamos a ver como el modulación PWM cambia el brillo de un led externo. seguimos
 
 [Fade In and Out - Learning MicroPython](https://dmccreary.github.io/learning-micropython/basics/04-fade-in-and-out/)
 
-[VideoDEMO de PWM](./doc/R2526_CL9_PWMdemo.mp4)
+
 
 **Montamos:** un led externo conectando su ánodo (+, pata larga) al GPIO15, y su cátodo (- , pata corta, muesca en el pastico) a una resistencia de 100 ohm cuya otra pata se conecta a GND.
 
@@ -165,7 +165,7 @@ En micropython la implementación de PWM permite que el ancho del pulso se puede
 
 Mira los dos programas que permiten introducir el valor dutty como nanosegundos o como porcentaje
 
-**SUGERENCIA: Usa un osciloscopio si dispones de el para ver la onda cuadrada generada**
+**SUGERENCIA: Usa un osciloscopio si dispones de él para ver la onda cuadrada generada**
 
 [TikTok  Video demo de PWM](https://www.tiktok.com/@jcspoza/video/7609828774716230934?is_from_webapp=1&sender_device=pc&web_id=7532116150106031638)
 
