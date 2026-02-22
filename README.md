@@ -24,8 +24,6 @@ Indice evolutivo del las clases del taller + libros y webs de referencia:
   - 1er montaje : Cambiar brillo de un led por PWM
   
   - 2do Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor
-    
-    
 
 - Proyecto completo-> en inicio de pruebas : sensor humedad suelo + bomba agua (motor)
 
@@ -106,6 +104,31 @@ En el trabajo eficaz en electricidad intervienen el voltaje, la corriente y el t
 
 Pero para que toda esta 'estrategia' funcione , tenemos que hacerlo tan rápido que ni siquiera se nota el parpadeo en un LED, o tan rápido en un motor que la inercia del giro suavice los cambios. entonces, **controlar la energia eficaz** =  controlar el tiempo que una señal está activada = **controlar la anchura del pulso de activación.**
 
+#### Capacidades de PWM de la Pico y Pico 2
+
+Aunque el nuevo chip de la PICO 2 el RP2350 tiene 12 canales dobles de PWM, en la tarjeta PICO 2 y PICO 2W **solo 'salen' 8**de ellos en los mismos pines que en el PICO y PICO W.
+
+Cada canal, por ejemplo PWM_0_ se puede configurar en una frecuencia de trabajo y 2 duty cycles en cada una de sus salidas A y B. 
+
+El dibujo de abajo indica las limitaciones de configuración, por ejemplo: el GPIO16 y el GPIO0 tiene en mismo canal y lado (PWM_0A) en cuanto a PWM por la que sus salidas no pueden configurarse de forma independiente
+
+- **Frecuencia:** Los canales dentro de la misma sección comparten la misma frecuencia, pero pueden tener ciclos de trabajo controlados individualmente. La frecuencia puede variar desde tan solo **8 Hz hasta un máximo de 62,5 MHz**cuando el microcontrolador funciona a su velocidad de reloj predeterminada de 125 MHz.
+- **Resolución:** Los canales PWM tienen una **resolución de 16 bits** , lo que permite un control muy fino sobre el ciclo de trabajo, utilizando valores de 0 a 65,535 para representar del 0% al 100% del ciclo de trabajo.
+
+Aplicaciones típicas:
+
+- **Control de brillo del LED:** ajuste del brillo de los LED estándar o RGB variando el ciclo de trabajo.
+- **Control de motor:** control preciso de la velocidad de los motores de CC o el ángulo de los servomotores.
+- **Generación de audio:** creación de tonos de audio simples mediante la generación de frecuencias específicas.
+- **Simulación de voltaje:** simulación de una salida de voltaje analógica (entre 0 V y 3,3 V) activando y desactivando rápidamente un pin digital.
+
+![pinout pico 2 - pwm](./doc/pin_pic.webp)
+
+![pinout pico 1 - pwm](./doc./pin_pic%20PICO1.webp)
+
+- **Frecuencia:** Los canales dentro de la misma sección comparten la misma frecuencia, pero pueden tener ciclos de trabajo controlados individualmente. La frecuencia puede variar desde tan solo 8 Hz hasta un máximo de 62,5 MHz cuando el microcontrolador funciona a su velocidad de reloj predeterminada de 125 MHz.
+- **Resolución:** Los canales PWM tienen una **resolución de 16 bits** , lo que permite un control muy fino sobre el ciclo de trabajo, utilizando valores de 0 a 65,535 para representar del 0% al 100% del ciclo de trabajo.
+
 ### 1er montaje : Cambiar brillo de un led por PWM
 
 Vamos a ver como el modulación PWM cambia el brillo de un led externo. seguimos el tutorial
@@ -142,6 +165,10 @@ En micropython la implementación de PWM permite que el ancho del pulso se puede
 
 Mira los dos programas que permiten introducir el valor dutty como nanosegundos o como porcentaje
 
+**SUGERENCIA: Usa un osciloscopio si dispones de el para ver la onda cuadrada generada**
+
+[TikTok  Video demo de PWM](https://www.tiktok.com/@jcspoza/video/7609828774716230934?is_from_webapp=1&sender_device=pc&web_id=7532116150106031638)
+
 #### 1.C) Usamos PWM para fade-in y fade out
 
 Y por fin el programa completo que va subiendo y bajando el ciclo de trabajo
@@ -151,8 +178,6 @@ Y por fin el programa completo que va subiendo y bajando el ciclo de trabajo
 ## 2do Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor
 
 ![](C:\Users\josec\OneDrive\Documentos\GitHub\2526CL9_salida_PWMyMasPotencia\doc\Transistor_cambia3a9.png)
-
-
 
 ## Proyecto completo-> en inicio de pruebas : sensor humedad suelo + bomba agua (motor)
 
@@ -173,4 +198,4 @@ Esta lección forma parte del los aprendizajes necesarios para controlar cargas 
 
 ## TO DO y Nota
 
-- Todo: 
+- Todo:
