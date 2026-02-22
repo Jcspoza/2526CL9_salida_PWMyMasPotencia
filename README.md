@@ -124,7 +124,7 @@ Aplicaciones típicas:
 
 ![pinout pico 2 - pwm](./doc/pin_pic.webp)
 
-![pinout pico 1 - pwm](./doc./pin_PICO1.webp)
+![pinout pico 1 - pwm](./doc./pinPICO1.webp)
 
 - **Frecuencia:** Los canales dentro de la misma sección comparten la misma frecuencia, pero pueden tener ciclos de trabajo controlados individualmente. La frecuencia puede variar desde tan solo 8 Hz hasta un máximo de 62,5 MHz cuando el microcontrolador funciona a su velocidad de reloj predeterminada de 125 MHz.
 - **Resolución:** Los canales PWM tienen una **resolución de 16 bits** , lo que permite un control muy fino sobre el ciclo de trabajo, utilizando valores de 0 a 65,535 para representar del 0% al 100% del ciclo de trabajo.
