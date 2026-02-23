@@ -13,14 +13,14 @@ from utime import sleep
 
 # Informative block - start
 p_ucontroler = "Pico _ & W"
-p_keyOhw = "Led + resistor on GPIO15"
+p_keyOhw = "Led + resistor on GPIO16"
 p_project = "External LED - PWM dutty input por 100- 1000Hz"
 p_version = "1.0"
 print(f"Microcontroler: {p_ucontroler} - Key other HW : {p_keyOhw}")
 print(f"Program: {p_project} - Version: {p_version}")
 # Informative block - end
 
-EXTERNAL_LED_PIN = 15
+EXTERNAL_LED_PIN = 16
 pwm_led = PWM(Pin(EXTERNAL_LED_PIN))
 pwm_led.freq(1000)
 

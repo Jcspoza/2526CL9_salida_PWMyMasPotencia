@@ -11,7 +11,7 @@ from utime import sleep # Get the sleep library from the time module.
 
 # Informative block - start
 p_ucontroler = "Pico W"
-p_keyOhw = "Led + resistor on GPIO15"
+p_keyOhw = "Led + resistor on GPIO16"
 p_project = "External LED toggle 2sec"
 p_version = "1.2"
 print(f"Microcontroler: {p_ucontroler} - Key other HW : {p_keyOhw}")
@@ -19,10 +19,10 @@ print(f"Program: {p_project} - Version: {p_version}")
 # -> 1.2 uso de toggle
 # Informative block - end
 
-EXTERNAL_LED_PIN = 15
+EXTERNAL_LED_PIN = 16
 ext_led = Pin(EXTERNAL_LED_PIN, Pin.OUT)
 
 while (True):
     ext_led.toggle()
-    print("External LED - gpio15 = ",ext_led.value())
+    print("External LED - gpio16 = ",ext_led.value())
     sleep(2)

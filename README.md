@@ -126,16 +126,11 @@ Aplicaciones típicas:
 
 ![pinout pico 1 - pwm](./doc/pinPICO1.webp)
 
-- **Frecuencia:** Los canales dentro de la misma sección comparten la misma frecuencia, pero pueden tener ciclos de trabajo controlados individualmente. La frecuencia puede variar desde tan solo 8 Hz hasta un máximo de 62,5 MHz cuando el microcontrolador funciona a su velocidad de reloj predeterminada de 125 MHz.
-- **Resolución:** Los canales PWM tienen una **resolución de 16 bits** , lo que permite un control muy fino sobre el ciclo de trabajo, utilizando valores de 0 a 65,535 para representar del 0% al 100% del ciclo de trabajo.
-
-### 1er montaje : Cambiar brillo de un led por PWM
+- ### 1er montaje : Cambiar brillo de un led por PWM
 
 Vamos a ver como el modulación PWM cambia el brillo de un led externo. seguimos el tutorial
 
 [Fade In and Out - Learning MicroPython](https://dmccreary.github.io/learning-micropython/basics/04-fade-in-and-out/)
-
-
 
 **Montamos:** un led externo conectando su ánodo (+, pata larga) al GPIO15, y su cátodo (- , pata corta, muesca en el pastico) a una resistencia de 100 ohm cuya otra pata se conecta a GND.
 
@@ -185,14 +180,14 @@ Esta lección forma parte del los aprendizajes necesarios para controlar cargas 
 
 ## Tabla resumen de programas
 
-| Programa                                                         | Lenguaje | HW si Robotica y Notas                   | Objetivo de Aprendizaje |
-| ---------------------------------------------------------------- | -------- | ---------------------------------------- | ----------------------- |
-| [Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py)                   | uPy      | LED en GPIO15 con resistencia de 100 ohm |                         |
-| [R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)       | uPy      |                                          |                         |
-| [R2526CL9_ExPWM_inNseg_v1.py](R2526CL9_ExPWM_inNseg_v1.py)       | uPy      |                                          |                         |
-| [R2526CL9_ExPWM_cycleFiFo_v1.py](R2526CL9_ExPWM_cycleFiFo_v1.py) | uPy      |                                          |                         |
-|                                                                  | uPy      |                                          |                         |
-|                                                                  | uPy      |                                          |                         |
+| Programa                                                         | Lenguaje | HW si Robotica y Notas                   | Objetivo de Aprendizaje                                                                                 |
+| ---------------------------------------------------------------- | -------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| [Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py)                   | uPy      | LED en GPIO16 con resistencia de 100 ohm | Prueba de led externo                                                                                   |
+| [R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)       | uPy      | LED en GPIO16 con resistencia de 100 ohm | Se puede introducir el duty en % de 0 a 100, para la onda cuadrada PWM - Sale try-except                |
+| [R2526CL9_ExPWM_inNseg_v1.py](R2526CL9_ExPWM_inNseg_v1.py)       | uPy      | LED en GPIO16 con resistencia de 100 ohm | Se puede introducir el duty en nanosegundos de 0 a 100, para la onda cuadrada PWM - Sale con try-except |
+| [R2526CL9_ExPWM_cycleFiFo_v1.py](R2526CL9_ExPWM_cycleFiFo_v1.py) | uPy      | LED en GPIO16 con resistencia de 100 ohm | Cicla la luminoisdad del un led - Sale con try-except                                                   |
+|                                                                  | uPy      |                                          |                                                                                                         |
+|                                                                  | uPy      |                                          |                                                                                                         |
 
 ---
 
