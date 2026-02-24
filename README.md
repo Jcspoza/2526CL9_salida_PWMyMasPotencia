@@ -23,9 +23,11 @@ Indice evolutivo del las clases del taller + libros y webs de referencia:
   
   - 1er montaje : Cambiar brillo de un led por PWM
   
-  - 2do Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor
-
-- Proyecto completo-> en inicio de pruebas : sensor humedad suelo + bomba agua (motor)
+  - 2do Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor BJC (sin PICO)
+  
+  - 3er Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor BJC (con PICO) por PWM
+  
+  - 4toMontaje : Controlar MOTOR a 5 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM
 
 - Tabla resumen de programas
 
@@ -170,9 +172,38 @@ Y por fin el programa completo que va subiendo y bajando el ciclo de trabajo
 
 [R2526CL9_ExPWM_cycleFiFo_v1.py](R2526CL9_ExPWM_cycleFiFo_v1.py)
 
-## 2do Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor
+## 2do Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor BJC (sin PICO)
+
+### Objetivo y explicacion previa
+
+Hay muchísima informacion de como usar un transistor en modo conmutador
+
+### Montaje
+
+No vamos a usar en el montaje una p
+
+#### Montaje 'ejecutable'
+
+[Circuit design Transistor cambia 3_a_9volt - Tinkercad](https://www.tinkercad.com/things/6eDDJTdeRIM-transistor-cambia-3a9volt?sharecode=ejcMYhQ0xF4YVPdFykIIm5n5ran323GCxTJmA1b2t1g)
+
+#### Montaje vista real, lista de componente y esquemático
 
 ![](C:\Users\josec\OneDrive\Documentos\GitHub\2526CL9_salida_PWMyMasPotencia\doc\Transistor_cambia3a9.png)
+
+[Esquemático Transitor cambia 3 volt a 9 volt](./doc/Transistor cambia 3_a_9volt.pdf)
+
+| Nombre  | Cantidad | Componente                       |
+| ------- | -------- | -------------------------------- |
+| BAT1    | 1        | Pila de 9 V                      |
+| T2N2222 | 1        | Transistor NPN (BJT)             |
+| RRled   | 1        | 330 Ω Resistencia                |
+| D1      | 1        | Rojo LED                         |
+| R1      | 1        | 100 Ω Resistencia                |
+| R2      | 1        | 10 kΩ Resistencia                |
+| S1      | 1        | Pulsador                         |
+| Bat2    | 1        | 2 baterías, AA, no Pila de 1,5 V |
+
+### Tutoriales
 
 ## Proyecto completo-> en inicio de pruebas : sensor humedad suelo + bomba agua (motor)
 
@@ -193,4 +224,4 @@ Esta lección forma parte del los aprendizajes necesarios para controlar cargas 
 
 ## TO DO y Nota
 
-- Todo:
+- ##### Todo
