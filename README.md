@@ -220,26 +220,32 @@ No vamos a usar en el montaje una PICO porque interesa cacharrear a gusto y hace
 
 (espero haber dado ok los permisos)
 
+O usa este con medidores
+
+[Transistor cambia 2 a 9 volt y medidores](https://www.tinkercad.com/things/2mT4O7ipjph-transistor-cambia-3a9volt-y-medidores)
+
 #### Montaje vista real, lista de componente y esquemático
 
-![](./doc/Transistor_cambia3a9.png)
+![](./doc/Transistor cambia 3_a_9volt_medidores.png)
 
 [Esquemático Transitor cambia 3 volt a 9 volt en pdf](./doc/Transistor_cambia_a_9volt.pdf)
 
 
 
-| Nombre  | Cantidad | Componente                       |
-| ------- | -------- | -------------------------------- |
-| BAT1    | 1        | Pila de 9 V                      |
-| T2N2222 | 1        | Transistor NPN (BJT)             |
-| RRled   | 1        | 330 Ω Resistencia                |
-| D1      | 1        | Rojo LED                         |
-| R1      | 1        | 100 Ω Resistencia                |
-| R2      | 1        | 10 kΩ Resistencia                |
-| S1      | 1        | Pulsador                         |
-| Bat2    | 1        | 2 baterías, AA, no Pila de 1,5 V |
+| Nombre                                               | Cantidad | Componente                       |
+| ---------------------------------------------------- | -------- | -------------------------------- |
+| BAT1                                                 | 1        | Pila de 9 V                      |
+| T2N2222                                              | 1        | Transistor NPN (BJT)             |
+| RRled                                                | 1        | 330 Ω Resistencia                |
+| D1                                                   | 1        | Rojo LED                         |
+| RRbase                                               | 1        | 1 kΩ Resistencia                 |
+| RR pull down base                                    | 1        | 10 kΩ Resistencia                |
+| S1                                                   | 1        | Pulsador                         |
+| Bat2                                                 | 1        | 2 baterías, AA, no Pila de 1,5 V |
+| MeterCorriente de Colector<br>MeterCorriente de base | 2        | Amperaje Multímetro              |
+| MeterVce                                             | 1        | Voltaje Multímetro               |
 
-### Tutoriales
+
 
 ## Proyecto completo-> en inicio de pruebas : sensor humedad suelo + bomba agua (motor)
 
