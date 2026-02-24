@@ -222,7 +222,7 @@ No vamos a usar en el montaje una PICO porque interesa cacharrear a gusto y hace
 
 #### Montaje vista real, lista de componente y esquemático
 
-![](C:\Users\josec\OneDrive\Documentos\GitHub\2526CL9_salida_PWMyMasPotencia\doc\Transistor_cambia3a9.png)
+![](./doc/Transistor_cambia3a9.png)
 
 [Esquemático Transitor cambia 3 volt a 9 volt en pdf](./doc/Transistor cambia 3_a_9volt.pdf)
 
