@@ -41,14 +41,14 @@ Más que un proyecto para ir construyendo, esta Clase #9 será un estudio de com
 
 ### Materiales
 
-| Material                                                                                                               | Descripcion                                                                                                                                                      | Kit SF | Montaje  |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------- |
-| [Protoboard 700](https://docs.sunfounder.com/projects/kepler-kit/en/latest/component/component_breadboard.html)        | Placa para prototipos ver apartado [Uso de la protoboard](https://github.com/Jcspoza/2526CL1_R_CircElect0#uso-de-la-protoboard). Mejor usar la protoboard de 700 | SI     | Todos    |
-| [Cables dupond M-M](https://docs.sunfounder.com/projects/kepler-kit/en/latest/component/component_wire.html)           | Sirven para hacer conexiones en protoboard                                                                                                                       | SI     | Todos    |
-| [Led rojo](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_led.html)                    | Se usara para indicar comienzo de cuenta de Tiempo de reacción                                                                                                   | SI     | Mon.  #1 |
-| [Resistencia 100 ohm x1](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_resistor.html) | Resistencia 100 ohm para limitar corriente de LED                                                                                                                | SI     | Mon. #1  |
-| Pico _, 2, W, 2W                                                                                                       | Vale cualquiera de los 4 modelos de Pico                                                                                                                         | SI     | Mon. #1  |
-|                                                                                                                        |                                                                                                                                                                  |        |          |
+| Material                                                                                                                   | Descripcion                                                                                                                                                      | Kit SF | Montaje       |
+| -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------- |
+| [Protoboard 700](https://docs.sunfounder.com/projects/kepler-kit/en/latest/component/component_breadboard.html)            | Placa para prototipos ver apartado [Uso de la protoboard](https://github.com/Jcspoza/2526CL1_R_CircElect0#uso-de-la-protoboard). Mejor usar la protoboard de 700 | SI     | Todos         |
+| [Cables dupond M-M](https://docs.sunfounder.com/projects/kepler-kit/en/latest/component/component_wire.html)               | Sirven para hacer conexiones en protoboard                                                                                                                       | SI     | Todos         |
+| [Led rojo](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_led.html)                        | Se usara para indicar comienzo de cuenta de Tiempo de reacción                                                                                                   | SI     | Mon.  #1      |
+| [Resistencia 100 ohm x1](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_resistor.html)     | Resistencia 100 ohm para limitar corriente de LED                                                                                                                | SI     | Mon. #1       |
+| Pico _, 2, W, 2W                                                                                                           | Vale cualquiera de los 4 modelos de Pico                                                                                                                         | SI     | Mon. #1       |
+| [Transistor BJC NPN S8050](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_transistor.html) |                                                                                                                                                                  | SI     | Mon#2, #3, #4 |
 
 ### Links a informacion
 
@@ -174,23 +174,57 @@ Y por fin el programa completo que va subiendo y bajando el ciclo de trabajo
 
 ## 2do Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor BJC (sin PICO)
 
-### Objetivo y explicacion previa
+### Tutoriales y Objetivo
 
-Hay muchísima informacion de como usar un transistor en modo conmutador
+#### Tutoriales
+
+Hay muchísima informacion y tutoriales sobre transistores 'clásicos' ( BJC) . Lo mas sencillo para empezar el es libro del que ya hemos hablado y que esta disponible en
+
+[Electronica para makers - Paoplo Aliverti - Ed marcombo](https://github.com/Jcspoza/2526_PyR_Index/blob/main/doc/edoc.site_electronica-para-makers-paolo-aliverti.pdf)
+
+Consultad desde la pagina 164 en adelante y en especial para este montaje y el siguiente el apartado **Transistor en saturación** ( que deberia llamarse en corte-saturacion o en modo interruptor)
+
+En el libro se habla del transistor 2N2222  (modelo NPN) , pero  el transistor que tenéis en el kit para NPN es el S8050 : son prácticamente idénticos.
+
+[Transistor &mdash; SunFounder Pico 2 W Starter Kit for Raspberry Pi Pico 2 W documentation](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_transistor.html)
+
+Un tutorial muy detallado del transistor S8050 es 
+
+[Guía de transistores NPN S8050: Pinado, Clasificaciones, Aplicaciones y Polarización](https://www.digi-electronics.es/sp/blogs/s8050-npn-transistor-guide-pinout-ratings-applications-biasing/271.html)
+
+**El MEJOR tutorial que he visto es** [Bipolar Transistor Tutorial, The BJT Transistor](https://www.electronics-tutorials.ws/transistor/tran_1.html)
+
+muy detallado dividido en 12 tutoriales,  en ingles.
+
+#### Objetivo
+
+Ya hemos visto como hacer variar el voltaje con el truco del PWM , pero solo nos vale para variaciones de 0 a 3,3 volt, y por otro lado un pin GPIO no puede ( no debe pedírsele)  mas de unos 20 mA, es decir que tenemos unos 60 mW, que no es mucho. 
+
+**Cuando necesitemos manejar mas potencia** **no podemos usar la PICO como fuente de energia, pero si como controlador de la energia que va a dar una fuente independiente.** La primera opcion es :
+
+1. Usar una fuente de alimentación adicional conectando las tierras en común
+
+2. usar el PWM hasta 3,3 volt para controlar un interruptor rápido como es un transistor, que eleve el voltaje o la corriente de potencia
+
+Eso es exactamente lo que hace un transistor en modo emisor común ( el modo colector común también vale)  configurado para estar solo en corte o saturación
 
 ### Montaje
 
-No vamos a usar en el montaje una p
+No vamos a usar en el montaje una PICO porque interesa cacharrear a gusto y hacer medias 
 
 #### Montaje 'ejecutable'
 
+**Por primera vez uso un simulador de circuitos en este curso**: para dibujar el montaje y para dar el listado de componentes, esta bien, aunque el esquemático no me gusta como queda. El simulador es ejecutable y se supone que se pueden colocar amperímetros y voltímetros. Yo os rogaria que hicierais el montaje con hardware de verdad, porque aunque los simuladores estan bien, nada sustituye la realidad 
+
 [Circuit design Transistor cambia 3_a_9volt - Tinkercad](https://www.tinkercad.com/things/6eDDJTdeRIM-transistor-cambia-3a9volt?sharecode=ejcMYhQ0xF4YVPdFykIIm5n5ran323GCxTJmA1b2t1g)
+
+(espero haber dado ok los permisos)
 
 #### Montaje vista real, lista de componente y esquemático
 
 ![](C:\Users\josec\OneDrive\Documentos\GitHub\2526CL9_salida_PWMyMasPotencia\doc\Transistor_cambia3a9.png)
 
-[Esquemático Transitor cambia 3 volt a 9 volt](./doc/Transistor cambia 3_a_9volt.pdf)
+[Esquemático Transitor cambia 3 volt a 9 volt en pdf](./doc/Transistor cambia 3_a_9volt.pdf)
 
 | Nombre  | Cantidad | Componente                       |
 | ------- | -------- | -------------------------------- |
