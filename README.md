@@ -224,7 +224,9 @@ No vamos a usar en el montaje una PICO porque interesa cacharrear a gusto y hace
 
 ![](./doc/Transistor_cambia3a9.png)
 
-[Esquemático Transitor cambia 3 volt a 9 volt en pdf](./doc/Transistor cambia 3_a_9volt.pdf)
+[Esquemático Transitor cambia 3 volt a 9 volt en pdf](./doc/Transistor_cambia_a_9volt.pdf)
+
+
 
 | Nombre  | Cantidad | Componente                       |
 | ------- | -------- | -------------------------------- |
