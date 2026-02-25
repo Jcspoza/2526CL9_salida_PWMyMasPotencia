@@ -226,11 +226,9 @@ O usa este con medidores
 
 #### Montaje vista real, lista de componente y esquemático
 
-![](./doc/Transistor cambia 3_a_9volt_medidores.png)
+![Esquema npn 3 a 9 medidores](./doc/Transistor_cambia_3_a_9volt_medidores.png)
 
 [Esquemático Transitor cambia 3 volt a 9 volt en pdf](./doc/Transistor_cambia_a_9volt.pdf)
-
-
 
 | Nombre                                               | Cantidad | Componente                       |
 | ---------------------------------------------------- | -------- | -------------------------------- |
@@ -244,8 +242,6 @@ O usa este con medidores
 | Bat2                                                 | 1        | 2 baterías, AA, no Pila de 1,5 V |
 | MeterCorriente de Colector<br>MeterCorriente de base | 2        | Amperaje Multímetro              |
 | MeterVce                                             | 1        | Voltaje Multímetro               |
-
-
 
 ## Proyecto completo-> en inicio de pruebas : sensor humedad suelo + bomba agua (motor)
 

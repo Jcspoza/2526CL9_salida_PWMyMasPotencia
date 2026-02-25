@@ -24,10 +24,10 @@ try: # try fuera del bucle porque quiero que se dentenga y no reanude
     while (True):
         for duty in range(65025):
             pwm_led.duty_u16(duty)
-            sleep(0.0001)
+            sleep(0.001)
         for duty in range(65025, 0, -1):
             pwm_led.duty_u16(duty)
-            sleep(0.0001)
+            sleep(0.001)
             
 except KeyboardInterrupt:
     pwm_led.duty_u16(0)
