@@ -19,7 +19,7 @@ print(f"Program: {p_project} - Version: {p_version}")
 # -> 1.2 uso de toggle
 # Informative block - end
 
-EXTERNAL_LED_PIN = 16
+EXTERNAL_LED_PIN = 15
 ext_led = Pin(EXTERNAL_LED_PIN, Pin.OUT)
 
 while (True):

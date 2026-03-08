@@ -16,7 +16,7 @@ print(f"Microcontroler: {p_ucontroler} - Key other HW : {p_keyOhw}")
 print(f"Program: {p_project} - Version: {p_version}")
 # Informative block - end
 
-EXTERNAL_LED_PIN = 16
+EXTERNAL_LED_PIN = 15
 pwm_led = PWM(Pin(EXTERNAL_LED_PIN))
 pwm_led.freq(1000)
 

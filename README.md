@@ -27,7 +27,9 @@ Indice evolutivo del las clases del taller + libros y webs de referencia:
   
   - 3er Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor BJC (con PICO) por PWM
   
-  - 4toMontaje : Controlar MOTOR a 5 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM
+  - 4toMontaje : Controlar MOTOR a 9 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM
+  
+  - 5to Montaje: Controlar MOTOR a 9 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM + control con potenciómetro por entrada analógica en PICO
 
 - Tabla resumen de programas
 
@@ -41,14 +43,14 @@ Más que un proyecto para ir construyendo, esta Clase #9 será un estudio de com
 
 ### Materiales
 
-| Material                                                                                                                   | Descripcion                                                                                                                                                      | Kit SF | Montaje       |
-| -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------- |
-| [Protoboard 700](https://docs.sunfounder.com/projects/kepler-kit/en/latest/component/component_breadboard.html)            | Placa para prototipos ver apartado [Uso de la protoboard](https://github.com/Jcspoza/2526CL1_R_CircElect0#uso-de-la-protoboard). Mejor usar la protoboard de 700 | SI     | Todos         |
-| [Cables dupond M-M](https://docs.sunfounder.com/projects/kepler-kit/en/latest/component/component_wire.html)               | Sirven para hacer conexiones en protoboard                                                                                                                       | SI     | Todos         |
-| [Led rojo](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_led.html)                        | Se usara para indicar comienzo de cuenta de Tiempo de reacción                                                                                                   | SI     | Mon.  #1      |
-| [Resistencia 100 ohm x1](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_resistor.html)     | Resistencia 100 ohm para limitar corriente de LED                                                                                                                | SI     | Mon. #1       |
-| Pico _, 2, W, 2W                                                                                                           | Vale cualquiera de los 4 modelos de Pico                                                                                                                         | SI     | Mon. #1       |
-| [Transistor BJC NPN S8050](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_transistor.html) |                                                                                                                                                                  | SI     | Mon#2, #3, #4 |
+| Material                                                                                                                   | Descripcion                                                                                                                                                      | Kit SF | Montaje               |
+| -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | --------------------- |
+| [Protoboard 700](https://docs.sunfounder.com/projects/kepler-kit/en/latest/component/component_breadboard.html)            | Placa para prototipos ver apartado [Uso de la protoboard](https://github.com/Jcspoza/2526CL1_R_CircElect0#uso-de-la-protoboard). Mejor usar la protoboard de 700 | SI     | Todos                 |
+| [Cables dupond M-M](https://docs.sunfounder.com/projects/kepler-kit/en/latest/component/component_wire.html)               | Sirven para hacer conexiones en protoboard                                                                                                                       | SI     | Todos                 |
+| [Led rojo](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_led.html)                        | Se usara para indicar comienzo de cuenta de Tiempo de reacción                                                                                                   | SI     | Mon.  #1              |
+| [Resistencia 100 ohm x1](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_resistor.html)     | Resistencia 100 ohm para limitar corriente de LED                                                                                                                | SI     | Mon. #1               |
+| Pico _, 2, W, 2W                                                                                                           | Vale cualquiera de los 4 modelos de Pico                                                                                                                         | SI     | Mon. #1, #3, #4, y #5 |
+| [Transistor BJC NPN S8050](https://docs.sunfounder.com/projects/pico-2w-kit/en/latest/component/component_transistor.html) |                                                                                                                                                                  | SI     | Mon#2, #3, #4, #5     |
 
 ### Links a informacion
 
@@ -243,20 +245,38 @@ O usa este con medidores
 | MeterCorriente de Colector<br>MeterCorriente de base | 2        | Amperaje Multímetro              |
 | MeterVce                                             | 1        | Voltaje Multímetro               |
 
+## 3er Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor BJC (con PICO) por PWM
+
+### Esquemáticos
+
+![](./doc/SalidaPWM_led_bb.png)
+
+![](./doc/SalidaPWM_led_esquemático.png)
+
+### Explicación
+
+Se traslada el montaje de cambiar 3 a 9 voltios, cambiando el pulsador por el pin GPIO15 produciendo ondas cuadradas PWM, como sui fuera un pulsador muy rápido. el transistor sigue a estos cambios y produce una onda cuadrada COPIA de la de la base del transistor , pero con un voltaje mayor.
+
+## 4toMontaje : Controlar MOTOR a 9 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM
+
+## 5to Montaje: Controlar MOTOR a 9 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM + control con potenciómetro por entrada analógica en PICO
+
 ## Proyecto completo-> en inicio de pruebas : sensor humedad suelo + bomba agua (motor)
 
 Esta lección forma parte del los aprendizajes necesarios para controlar cargas analógicas de cierta potencia como un motor
 
 ## Tabla resumen de programas
 
-| Programa                                                         | Lenguaje | HW si Robotica y Notas                   | Objetivo de Aprendizaje                                                                                 |
-| ---------------------------------------------------------------- | -------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| [Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py)                   | uPy      | LED en GPIO16 con resistencia de 100 ohm | Prueba de led externo                                                                                   |
-| [R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)       | uPy      | LED en GPIO16 con resistencia de 100 ohm | Se puede introducir el duty en % de 0 a 100, para la onda cuadrada PWM - Sale try-except                |
-| [R2526CL9_ExPWM_inNseg_v1.py](R2526CL9_ExPWM_inNseg_v1.py)       | uPy      | LED en GPIO16 con resistencia de 100 ohm | Se puede introducir el duty en nanosegundos de 0 a 100, para la onda cuadrada PWM - Sale con try-except |
-| [R2526CL9_ExPWM_cycleFiFo_v1.py](R2526CL9_ExPWM_cycleFiFo_v1.py) | uPy      | LED en GPIO16 con resistencia de 100 ohm | Cicla la luminoisdad del un led - Sale con try-except                                                   |
-|                                                                  | uPy      |                                          |                                                                                                         |
-|                                                                  | uPy      |                                          |                                                                                                         |
+Todos los progrmas en microPython
+
+| Programa                                                         | Montaje                      | HW si Robotica y Notas                                          | Objetivo de Aprendizaje                                                                                 |
+| ---------------------------------------------------------------- | ---------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| [Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py)                   | #1                           | LED en GPIO16 con resistencia de 100 ohm                        | Prueba de led externo                                                                                   |
+| [R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)       | #1, #3, #4                   | #1 LED en GPIO16 con resistencia de 100 ohm / en #3 y #4 GPIO15 | Se puede introducir el duty en % de 0 a 100, para la onda cuadrada PWM - Sale try-except                |
+| [R2526CL9_ExPWM_inNseg_v1.py](R2526CL9_ExPWM_inNseg_v1.py)       | #1                           | LED en GPIO16 con resistencia de 100 ohm                        | Se puede introducir el duty en nanosegundos de 0 a 100, para la onda cuadrada PWM - Sale con try-except |
+| [R2526CL9_ExPWM_cycleFiFo_v1.py](R2526CL9_ExPWM_cycleFiFo_v1.py) | #1, #3, #4 (variando espera) | #1 LED en GPIO16 con resistencia de 100 ohm /en #3 y #4 GPIO15  | Cicla la luminoisdad del un led - Sale con try-except                                                   |
+| R2526CL9_Motor_controlPot                                        | #5                           |                                                                 |                                                                                                         |
+|                                                                  |                              |                                                                 |                                                                                                         |
 
 ---
 

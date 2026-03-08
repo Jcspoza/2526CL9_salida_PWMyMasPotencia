@@ -20,7 +20,7 @@ print(f"Microcontroler: {p_ucontroler} - Key other HW : {p_keyOhw}")
 print(f"Program: {p_project} - Version: {p_version}")
 # Informative block - end
 
-EXTERNAL_LED_PIN = 16
+EXTERNAL_LED_PIN = 15
 pwm_led = PWM(Pin(EXTERNAL_LED_PIN))
 pwm_led.freq(1000)
 
@@ -32,7 +32,7 @@ try: # try fuera del bucle porque quiero que se dentenga y no reanude
     while (True):
         pwm_led.duty_u16(por60mil)
         por100 = int(input("Porcentaje (0 a 100)= "))
-        while por100 <= 0 or por100 > 100:
+        while por100 < 0 or por100 > 100:
             print('Error en la introduccion de porcentaje')
             por100 = int(input("Porcentaje (0 a 100)= "))
             
