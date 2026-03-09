@@ -208,7 +208,7 @@ Ya hemos visto como hacer variar el voltaje con el truco del PWM , pero solo nos
 
 2. usar el PWM hasta 3,3 volt para controlar un interruptor rápido como es un transistor, que eleve el voltaje o la corriente de potencia
 
-Eso es exactamente lo que hace un transistor en modo emisor común ( el modo colector común también vale)  configurado para estar solo en corte o saturación
+Eso es exactamente lo que hace un transistor en modo emisor común ( el modo colector común también vale)  **configurado para estar solo en corte o saturación**
 
 ### Montaje
 
@@ -228,22 +228,26 @@ O usa este con medidores
 
 #### Montaje vista real, lista de componente y esquemático
 
-![Esquema npn 3 a 9 medidores](./doc/Transistor_cambia_3_a_9volt_medidores.png)
-
-[Esquemático Transitor cambia 3 volt a 9 volt en pdf](./doc/Transistor_cambia_a_9volt.pdf)
+![Esquema npn 3 a 9 medidores](./doc/Transistor_cambia_3_a_9volt_V2_medidores.png)
 
 | Nombre                                               | Cantidad | Componente                       |
 | ---------------------------------------------------- | -------- | -------------------------------- |
 | BAT1                                                 | 1        | Pila de 9 V                      |
 | T2N2222                                              | 1        | Transistor NPN (BJT)             |
-| RRled                                                | 1        | 330 Ω Resistencia                |
-| D1                                                   | 1        | Rojo LED                         |
+| RRled                                                | 1        | 220 Ω Resistencia                |
+| D1                                                   | 1        | Azul LED                         |
 | RRbase                                               | 1        | 1 kΩ Resistencia                 |
 | RR pull down base                                    | 1        | 10 kΩ Resistencia                |
 | S1                                                   | 1        | Pulsador                         |
 | Bat2                                                 | 1        | 2 baterías, AA, no Pila de 1,5 V |
 | MeterCorriente de Colector<br>MeterCorriente de base | 2        | Amperaje Multímetro              |
-| MeterVce                                             | 1        | Voltaje Multímetro               |
+| MeterVce                                             | 2        | Voltaje Multímetro               |
+
+![](C:\Users\josec\OneDrive\Documentos\GitHub\2526CL9_salida_PWMyMasPotencia\doc\npnEcomun_polardivTen_esquemático.png) 
+
+### Explicación : transistor NPN en emisor común polarizado con divisor de tensión
+
+ME QUEDE AQUI Cambiando el valor en voltios d ela fuente 
 
 ## 3er Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor BJC (con PICO) por PWM
 
