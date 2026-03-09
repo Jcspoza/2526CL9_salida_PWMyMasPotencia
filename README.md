@@ -257,7 +257,7 @@ La resistencia equivalente Thevenin es la de considerar las 2 resistencias de 10
 
 El voltaje equivalente Thevening = 3,36 volt
 
-haciendo los calculos la corriente de base Ib = 3,1 mA suficiente para saturar el transistor
+Haciendo los calculos la corriente de base Ib = 3,1 mA suficiente para saturar el transistor
 
 ---
 
