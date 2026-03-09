@@ -17,7 +17,7 @@ Indice evolutivo del las clases del taller + libros y webs de referencia:
   * Links a Tutoriales  e informacion
   - Librerías importantes - No necesarias
 
-- Aprender / Entender: entradas analógicas en micro Controladores
+- Aprender / Entender: Salidas pseudo-analógicas en micro Controladores
   
   - Intro Teórica: DAC, el protocolo I2S y la modulación PWM
   
@@ -130,7 +130,9 @@ Aplicaciones típicas:
 
 ![pinout pico 1 - pwm](./doc/pinPICO1.webp)
 
-- ### 1er montaje : Cambiar brillo de un led por PWM
+---
+
+### <u>1er montaje </u>: Cambiar brillo de un led por PWM
 
 Vamos a ver como el modulación PWM cambia el brillo de un led externo. seguimos el tutorial
 
@@ -174,11 +176,23 @@ Y por fin el programa completo que va subiendo y bajando el ciclo de trabajo
 
 [R2526CL9_ExPWM_cycleFiFo_v1.py](R2526CL9_ExPWM_cycleFiFo_v1.py)
 
-## 2do Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor BJC (sin PICO)
+---
 
-### Tutoriales y Objetivo
+### <u>2do Montaje</u> : Controlar LED a 9vot desde 3,3 volt con Transistor BJC (sin PICO)
 
-#### Tutoriales
+#### Objetivo
+
+Ya hemos visto como hacer variar el voltaje con el truco del PWM , pero solo nos vale para variaciones de 0 a 3,3 volt, y por otro lado un pin GPIO no puede ( no debe pedírsele) mas de unos 20 mA, es decir que tenemos unos 60 mW, que no es mucho.
+
+**Cuando necesitemos manejar mas potencia** **no podemos usar la PICO como fuente de energia, pero si como controlador de la energia que va a dar una fuente independiente.** La primera opcion es :
+
+1. Usar una fuente de alimentación adicional conectando las tierras en común
+
+2. usar el PWM hasta 3,3 volt para controlar un interruptor rápido como es un transistor, que eleve el voltaje o la corriente de potencia
+
+Eso es exactamente lo que hace un transistor en modo emisor común ( el modo colector común también vale) **configurado para estar solo en corte o saturación
+
+#### Tutoriales sobre transistores BJC
 
 Hay muchísima informacion y tutoriales sobre transistores 'clásicos' ( BJC) . Lo mas sencillo para empezar el es libro del que ya hemos hablado y que esta disponible en
 
@@ -198,35 +212,15 @@ Un tutorial muy detallado del transistor S8050 es
 
 muy detallado dividido en 12 tutoriales,  en ingles.
 
-#### Objetivo
-
-Ya hemos visto como hacer variar el voltaje con el truco del PWM , pero solo nos vale para variaciones de 0 a 3,3 volt, y por otro lado un pin GPIO no puede ( no debe pedírsele)  mas de unos 20 mA, es decir que tenemos unos 60 mW, que no es mucho. 
-
-**Cuando necesitemos manejar mas potencia** **no podemos usar la PICO como fuente de energia, pero si como controlador de la energia que va a dar una fuente independiente.** La primera opcion es :
-
-1. Usar una fuente de alimentación adicional conectando las tierras en común
-
-2. usar el PWM hasta 3,3 volt para controlar un interruptor rápido como es un transistor, que eleve el voltaje o la corriente de potencia
-
-Eso es exactamente lo que hace un transistor en modo emisor común ( el modo colector común también vale)  **configurado para estar solo en corte o saturación**
-
-### Montaje
+#### Montaje HW y simulado 'ejecutable'
 
 No vamos a usar en el montaje una PICO porque interesa cacharrear a gusto y hacer medias 
 
-#### Montaje 'ejecutable'
-
 **Por primera vez uso un simulador de circuitos en este curso**: para dibujar el montaje y para dar el listado de componentes, esta bien, aunque el esquemático no me gusta como queda. El simulador es ejecutable y se supone que se pueden colocar amperímetros y voltímetros. Yo os rogaria que hicierais el montaje con hardware de verdad, porque aunque los simuladores estan bien, nada sustituye la realidad 
-
-[Circuit design Transistor cambia 3_a_9volt - Tinkercad](https://www.tinkercad.com/things/6eDDJTdeRIM-transistor-cambia-3a9volt?sharecode=ejcMYhQ0xF4YVPdFykIIm5n5ran323GCxTJmA1b2t1g)
-
-(espero haber dado ok los permisos)
-
-O usa este con medidores
 
 [Transistor cambia 2 a 9 volt y medidores](https://www.tinkercad.com/things/2mT4O7ipjph-transistor-cambia-3a9volt-y-medidores)
 
-#### Montaje vista real, lista de componente y esquemático
+##### Montaje vista real, lista de componente y esquemático
 
 ![Esquema npn 3 a 9 medidores](./doc/Transistor_cambia_3_a_9volt_V2_medidores.png)
 
@@ -247,9 +241,33 @@ O usa este con medidores
 
 ### Explicación : transistor NPN en emisor común polarizado con divisor de tensión
 
-ME QUEDE AQUI Cambiando el valor en voltios d ela fuente 
+Para hacer los calculos de polarización del transistor en configuración de emisor común, con polarización de base en divisor de tensión , hay que usar ademas de :
 
-## 3er Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor BJC (con PICO) por PWM
+ [leyes de kirchhoff](https://www.google.com/search?sca_esv=c9866652b0fe63dd&sxsrf=ANbL-n5VKinvl7VxM6LQeCgP7mFW6SUwiA:1773082286544&q=leyes+de+kirchhoff&spell=1&sa=X&ved=2ahUKEwiSh-OevpOTAxWpqf0HHRV3I84QkeECKAB6BAgQEAE) +
+
+los teoremas de [Thévenin](https://www.google.com/search?q=Th%C3%A9venin&sca_esv=c9866652b0fe63dd&sxsrf=ANbL-n5VKinvl7VxM6LQeCgP7mFW6SUwiA%3A1773082286544&ei=rhavaZL4IKnT9u8Ple6N8Qw&biw=1280&bih=551&oq=teorema+de+thevening&gs_lp=Egxnd3Mtd2l6LXNlcnAiFHRlb3JlbWEgZGUgdGhldmVuaW5nKgIIATIJEAAYgAQYChgLMgkQABiABBgKGAsyCRAAGIAEGAoYCzIJEAAYgAQYChgLMgkQABiABBgKGAsyCRAAGIAEGAoYCzIJEAAYgAQYChgLMgkQABiABBgKGAsyCRAAGIAEGAoYCzIJEAAYgAQYChgLSONPUMwIWLxBcAJ4AZABAZgBpQGgAYcbqgEFMTYuMTe4AQHIAQD4AQGYAiKgAssbqAIUwgIKEAAYRxjWBBiwA8ICDRAAGIAEGIoFGEMYsAPCAgkQABiABBgNGArCAggQABiABBiiBMICBRAAGO8FwgIGEAAYFhgewgIHECMYsAIYJ8ICBxAAGIAEGA3CAgcQIxixAhgnwgIMEAAYgAQYChgLGLEDwgIHEAAYgAQYCsICBRAAGIAEwgIEECMYJ8ICCBAAGIAEGLEDwgIKEAAYgAQYigUYQ8ICBRAuGIAEwgIIEC4YgAQYsQPCAgoQABiABBgUGIcCwgINEAAYgAQYigUYQxixA8ICCxAAGIAEGLEDGIMBwgIOEC4YgAQYsQMYxwEY0QPCAgcQIxjqAhgnwgIWEAAYgAQYigUYQxjnBhjqAhi0AtgBAcICEBAAGIAEGIoFGEMYsQMYgwHCAgsQLhiABBixAxiDAZgDBOIDBRIBMSBA8QWZzT1CybMy1IgGAZAGCroGBggBEAEYAZIHBTEwLjI0oAeV2QGyBwQ4LjI0uAfCG8IHBjAuMi4zMsgHmwGACAE&sclient=gws-wiz-serp&ved=2ahUKEwil1oXVvpOTAxWC1gIHHQOCB5EQgK4QegYIAQgAEAM) y [Norton](https://www.google.com/search?q=Norton&sca_esv=c9866652b0fe63dd&sxsrf=ANbL-n5VKinvl7VxM6LQeCgP7mFW6SUwiA%3A1773082286544&ei=rhavaZL4IKnT9u8Ple6N8Qw&biw=1280&bih=551&oq=teorema+de+thevening&gs_lp=Egxnd3Mtd2l6LXNlcnAiFHRlb3JlbWEgZGUgdGhldmVuaW5nKgIIATIJEAAYgAQYChgLMgkQABiABBgKGAsyCRAAGIAEGAoYCzIJEAAYgAQYChgLMgkQABiABBgKGAsyCRAAGIAEGAoYCzIJEAAYgAQYChgLMgkQABiABBgKGAsyCRAAGIAEGAoYCzIJEAAYgAQYChgLSONPUMwIWLxBcAJ4AZABAZgBpQGgAYcbqgEFMTYuMTe4AQHIAQD4AQGYAiKgAssbqAIUwgIKEAAYRxjWBBiwA8ICDRAAGIAEGIoFGEMYsAPCAgkQABiABBgNGArCAggQABiABBiiBMICBRAAGO8FwgIGEAAYFhgewgIHECMYsAIYJ8ICBxAAGIAEGA3CAgcQIxixAhgnwgIMEAAYgAQYChgLGLEDwgIHEAAYgAQYCsICBRAAGIAEwgIEECMYJ8ICCBAAGIAEGLEDwgIKEAAYgAQYigUYQ8ICBRAuGIAEwgIIEC4YgAQYsQPCAgoQABiABBgUGIcCwgINEAAYgAQYigUYQxixA8ICCxAAGIAEGLEDGIMBwgIOEC4YgAQYsQMYxwEY0QPCAgcQIxjqAhgnwgIWEAAYgAQYigUYQxjnBhjqAhi0AtgBAcICEBAAGIAEGIoFGEMYsQMYgwHCAgsQLhiABBixAxiDAZgDBOIDBRIBMSBA8QWZzT1CybMy1IgGAZAGCroGBggBEAEYAZIHBTEwLjI0oAeV2QGyBwQ4LjI0uAfCG8IHBjAuMi4zMsgHmwGACAE&sclient=gws-wiz-serp&ved=2ahUKEwil1oXVvpOTAxWC1gIHHQOCB5EQgK4QegYIAQgAEAQ) permiten simplificar redes lineales complejas en un circuito equivalente de dos terminales más sencillo
+
+Se puede ver un ejemplo de calculo en el libro 
+
+[Electronica para makers - Paoplo Aliverti - Ed marcombo](https://github.com/Jcspoza/2526_PyR_Index/blob/main/doc/edoc.site_electronica-para-makers-paolo-aliverti.pdf)
+
+pagina 174, solo hay que cambiar la fuente de 9 volt por la nuestra de 3,7 volt
+
+La resistencia equivalente Thevenin es la de considerar las 2 resistencias de 10 y 1 k en paralelo = **909 ohm**
+
+El voltaje equivalente Thevening = 3,36 volt
+
+haciendo los calculos la corriente de base Ib = 3,1 mA suficiente para saturar el transistor
+
+---
+
+### <u> 3er Montaje</u> : Controlar LED a 9vot desde 3,3 volt con Transistor BJC (con PICO) por PWM
+
+#### Programa de test
+
+Usaremos el progrma que produce una onda PWM por un pin y puede graduar su 'ciclo de trabajo' como un porcentaje. Solo **hay que cambiar el GPIO al GPIO15**
+
+[R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)
 
 ### Esquemáticos
 
@@ -257,13 +275,17 @@ ME QUEDE AQUI Cambiando el valor en voltios d ela fuente
 
 ![](./doc/SalidaPWM_led_esquemático.png)
 
-### Explicación
+#### Explicación
 
-Se traslada el montaje de cambiar 3 a 9 voltios, cambiando el pulsador por el pin GPIO15 produciendo ondas cuadradas PWM, como sui fuera un pulsador muy rápido. el transistor sigue a estos cambios y produce una onda cuadrada COPIA de la de la base del transistor , pero con un voltaje mayor.
+**Se 'traslada' el montaje de cambiar 3 a 9 voltios, cambiando el pulsador por el pin GPIO15 produciendo ondas cuadradas PWM**, como si fuera un pulsador muy rápido: el transistor sigue a estos cambios y produce una onda cuadrada COPIA de la de la base del transistor , pero con un voltaje mayor.
 
-## 4toMontaje : Controlar MOTOR a 9 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM
+### 4toMontaje : Controlar MOTOR a 9 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM
 
-## 5to Montaje: Controlar MOTOR a 9 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM + control con potenciómetro por entrada analógica en PICO
+...
+
+### 5to Montaje: Controlar MOTOR a 9 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM + control con potenciómetro por entrada analógica en PICO
+
+...
 
 ## Proyecto completo-> en inicio de pruebas : sensor humedad suelo + bomba agua (motor)
 
@@ -286,4 +308,4 @@ Todos los progrmas en microPython
 
 ## TO DO y Nota
 
-- ##### Todo
+- 
