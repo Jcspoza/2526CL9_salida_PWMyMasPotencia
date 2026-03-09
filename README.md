@@ -265,7 +265,7 @@ Haciendo los calculos la corriente de base Ib = 3,1 mA suficiente para saturar e
 
 #### Programa de test
 
-Usaremos el progrma que produce una onda PWM por un pin y puede graduar su 'ciclo de trabajo' como un porcentaje. Solo **hay que cambiar el GPIO al GPIO15**
+Usaremos el programa que produce una onda PWM por un pin y puede graduar su 'ciclo de trabajo' como un porcentaje. Solo **hay que cambiar el GPIO al GPIO15**
 
 [R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)
 
@@ -281,11 +281,31 @@ Usaremos el progrma que produce una onda PWM por un pin y puede graduar su 'cicl
 
 ### 4toMontaje : Controlar MOTOR a 9 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM
 
-...
+#### Montaje
+
+![](./doc/SalidaPWM_motor_bb.png)
+
+#### Programa
+
+Usaremos el programa que produce una onda PWM por un pin y puede graduar su 'ciclo de trabajo' como un porcentaje. Solo **hay que cambiar el GPIO al GPIO15**
+
+[R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)
+
+---
+
+
+
+
 
 ### 5to Montaje: Controlar MOTOR a 9 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM + control con potenciómetro por entrada analógica en PICO
 
-...
+#### Programa
+
+Fusión de **R2526_CL6_ADC_poten_1_0**.py , ver CL6, y **R2526CL9_ExPWM_inp100_v1.py**
+
+[R2526CL9_Motor_controlPot](R2526CL9_Motor_controlPot)
+
+---
 
 ## Proyecto completo-> en inicio de pruebas : sensor humedad suelo + bomba agua (motor)
 
@@ -293,16 +313,16 @@ Esta lección forma parte del los aprendizajes necesarios para controlar cargas 
 
 ## Tabla resumen de programas
 
-Todos los progrmas en microPython
+Todos los programas en microPython
 
-| Programa                                                         | Montaje                      | HW si Robotica y Notas                                          | Objetivo de Aprendizaje                                                                                 |
-| ---------------------------------------------------------------- | ---------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| [Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py)                   | #1                           | LED en GPIO16 con resistencia de 100 ohm                        | Prueba de led externo                                                                                   |
-| [R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)       | #1, #3, #4                   | #1 LED en GPIO16 con resistencia de 100 ohm / en #3 y #4 GPIO15 | Se puede introducir el duty en % de 0 a 100, para la onda cuadrada PWM - Sale try-except                |
-| [R2526CL9_ExPWM_inNseg_v1.py](R2526CL9_ExPWM_inNseg_v1.py)       | #1                           | LED en GPIO16 con resistencia de 100 ohm                        | Se puede introducir el duty en nanosegundos de 0 a 100, para la onda cuadrada PWM - Sale con try-except |
-| [R2526CL9_ExPWM_cycleFiFo_v1.py](R2526CL9_ExPWM_cycleFiFo_v1.py) | #1, #3, #4 (variando espera) | #1 LED en GPIO16 con resistencia de 100 ohm /en #3 y #4 GPIO15  | Cicla la luminoisdad del un led - Sale con try-except                                                   |
-| R2526CL9_Motor_controlPot                                        | #5                           |                                                                 |                                                                                                         |
-|                                                                  |                              |                                                                 |                                                                                                         |
+| Programa                                                         | Montaje                      | HW si Robotica y Notas                                                                                                                 | Objetivo de Aprendizaje                                                                                 |
+| ---------------------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| [Rbhwt_Exblink_v1_2.py](Rbhwt_Exblink_v1_2.py)                   | #1                           | LED en GPIO16 con resistencia de 100 ohm                                                                                               | Prueba de led externo                                                                                   |
+| [R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)       | #1, #3, #4                   | #1 LED en GPIO16 con resistencia de 100 ohm / en #3 y #4 GPIO15                                                                        | Se puede introducir el duty en % de 0 a 100, para la onda cuadrada PWM - Sale try-except                |
+| [R2526CL9_ExPWM_inNseg_v1.py](R2526CL9_ExPWM_inNseg_v1.py)       | #1                           | LED en GPIO16 con resistencia de 100 ohm                                                                                               | Se puede introducir el duty en nanosegundos de 0 a 100, para la onda cuadrada PWM - Sale con try-except |
+| [R2526CL9_ExPWM_cycleFiFo_v1.py](R2526CL9_ExPWM_cycleFiFo_v1.py) | #1, #3, #4 (variando espera) | #1 LED en GPIO16 con resistencia de 100 ohm /en #3 y #4 GPIO15                                                                         | Cicla la luminosidad del un led - Sale con try-except                                                   |
+| [R2526CL9_Motor_controlPot](R2526CL9_Motor_controlPot)           | #5                           | Potenciometro en ADC0 pin cntral otros 2 a 3,3 v y GNG + Motor carga coletro de un NPN base conectada a GPIO15 con div tensión 1 y 10K | Controla un motor por PWM en GPIO15, leyendoo un potenciómetro por al entrada ADC0 (GPIO26)             |
+|                                                                  |                              |                                                                                                                                        |                                                                                                         |
 
 ---
 

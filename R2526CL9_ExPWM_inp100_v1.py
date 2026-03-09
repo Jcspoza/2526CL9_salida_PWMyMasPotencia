@@ -3,7 +3,7 @@
 # Hardware platform: Pico _ & W / funciona igual sin cambios
 # Librerias : Ninguna
 # Ref librerias: 
-# Fecha JCSP 2025 06
+# Fecha JCSP 2026 03
 # Licencia : CC BY-NC-SA 4.0
 # REf basica https://dmccreary.github.io/learning-micropython/basics/04-fade-in-and-out/
 
@@ -24,7 +24,7 @@ EXTERNAL_LED_PIN = 15
 pwm_led = PWM(Pin(EXTERNAL_LED_PIN))
 pwm_led.freq(1000)
 
-por100 = 50 # fijamso inicialmente a 50% del brillo
+por100 = 50 # fijamos inicialmente a 50% del brillo
 # pasamos a dutty cicle  de 0 a 65 000
 por60mil = int(65535 * por100 / 100)
 
