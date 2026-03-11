@@ -28,6 +28,8 @@ Indice evolutivo del las clases del taller + libros y webs de referencia:
   - 3er Montaje : Controlar LED a 9vot desde 3,3 volt con Transistor BJC (con PICO) por PWM
   
   - 4toMontaje : Controlar MOTOR a 9 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM
+    
+    - Porque hay que usar un diodo en paralelo  y en inversa (fly-back) con motores
   
   - 5to Montaje: Controlar MOTOR a 9 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM + control con potenciómetro por entrada analógica en PICO
 
@@ -285,6 +287,29 @@ Usaremos el programa que produce una onda PWM por un pin y puede graduar su 'cic
 
 ![](./doc/SalidaPWM_motor_bb.png)
 
+#### Porque hay que usar un diodo en paralelo en inversa ( fly-back) con motores
+
+La mejor explicación que he encontrado este en este video muy visual
+
+[#183: Why diodes are
+used around relay coils: Back to Basics on flyback or snubber diodes](https://youtu.be/c6I7Ycbv8B8?si=-LzSIEa1JaFiiLit)
+
+##### Explicación resumida:
+
+Los diodos de fly-back (o de retorno) se utilizan con motores y cargas inductivas **para proteger los componentes electrónicos de control (como transistores, MOSFETs o relés) contra picos de alto voltaje destructivos.** 
+
+Cuando el circuito que incluye al motor  (o relé),  se apaga, la bobina del motor (o rele) libera la energia magnética acumulada, generando una corriente inversa peligrosa que el diodo disipa. 
+
+**Razones clave para usarlos:**
+
+- **Protección de Componentes:** Evita que el pico de voltaje ("flyback" o fuerza contraelectromotriz) dañe transistores, microcontroladores o interruptores al apagar el motor.
+- **Absorción de Energía:** La bobina del motor intenta mantener el flujo de corriente; el diodo, colocado en antiparalelo, proporciona un camino seguro para esta energía.
+- **Estabilidad del Circuito:** Reduce el ruido eléctrico y chispazos en interruptores mecánicos, aumentando la vida útil del sistema.
+
+**Cómo conectarlo:**  
+
+    Se debe conectar en paralelo a la bobina del motor, con el cátodo (la parte con la línea) al positivo y el ánodo al negativo, asegurando que quede en **polarización inversa** durante el funcionamiento normal
+
 #### Programa
 
 Usaremos el programa que produce una onda PWM por un pin y puede graduar su 'ciclo de trabajo' como un porcentaje. Solo **hay que cambiar el GPIO al GPIO15**
@@ -292,10 +317,6 @@ Usaremos el programa que produce una onda PWM por un pin y puede graduar su 'cic
 [R2526CL9_ExPWM_inp100_v1.py](R2526CL9_ExPWM_inp100_v1.py)
 
 ---
-
-
-
-
 
 ### 5to Montaje: Controlar MOTOR a 9 volt desde 3,3 volt con Transistor BJC (con PICO) por PWM + control con potenciómetro por entrada analógica en PICO
 
